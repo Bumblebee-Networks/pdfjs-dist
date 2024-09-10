@@ -2027,8 +2027,9 @@ class PDFWorker {
       if (mainWorkerMessageHandler) {
         return mainWorkerMessageHandler;
       }
+      const eval2 = eval;
       if (_is_node.isNodeJS && typeof require === "function") {
-        const worker = eval("require")(this.workerSrc);
+        const worker = eval2("require")(this.workerSrc);
         return worker.WorkerMessageHandler;
       }
       await (0, _display_utils.loadScript)(this.workerSrc);
